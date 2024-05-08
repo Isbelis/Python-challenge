@@ -1,3 +1,4 @@
+
 #**** Module 3-homework-Python challenge - PyBank*******
 
 #Dependencies
@@ -5,8 +6,8 @@ import csv
 import os
 
 # Files to load and output 
-file_to_load = os.path.join("Resources", "budget_data.csv")
-file_to_output = os.path.join("Analysis", "Analysis_PyBank.txt")
+load_f = os.path.join("Resources", "budget_data.csv")
+output_f = os.path.join("Analysis", "Analysis_PyBank.txt")
 
 # Track various financial parameters
 total_months = 0
@@ -19,9 +20,9 @@ total_net = 0
 
 #Read the csv and convert it into a list of dictionaies
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
-with open(file_to_load) as financial_data:
+
+with open(load_f) as financial_data:
     reader = csv.reader(financial_data)
-    
     #Read the header row
     header =next(reader)
     
@@ -61,23 +62,42 @@ net_monthly_avg = round(sum(net_change_list) / len(net_change_list),2)
        #output += (f"Total months: {total_months}",
                  # f"Total: ${total_net}"))
 
+#output =  "-----------------, Financial Analysis"
+             # print(f"Total months:", total_months)
+             # print(f"Total:", "$",total_net)
+             # print(f"Average Change:", "$",net_monthly_avg)
+             # print(f"Greatest Increase in Profits:", greatest_increase)
+              #print(f"Greatest Decrease in Profits:", greatest_decrease)
+print("Total Months:", total_months)
+print("Total:,   $", total_net)
+print("Average Change:,   $",net_monthly_avg)
+print("Greatest Increase in Profits:", greatest_increase),
+print("Greatest Decrease in Profits:", greatest_decrease),
 
-print ("Financial Analysis", "")  
-print("Total months:", total_months)
-print("Total:", "$",total_net)
-print("Average Change:", "$",net_monthly_avg)
-print("Greatest Increase in Profits:", greatest_increase)
-print("Greatest Decrease in Profits:", greatest_decrease)
+with open(output_f) as output_file:
+     output_file.write(output_f)
+     print
           
 
-          
+#output = "Analysis\Analysis_PyBank.txt"
+#output += f "net_monthly_avg: {net_monthly_avg}"
+
+#with open(output_path) as output_file:
+#output_file.write(output)
+#print(output)
+
         #   #Generate Output SUmmary
         #   output = (
         #       print (f:Analysis_PyBank.txt)
         #   )
 
           
-          
+#print ("Financial Analysis", "")  
+#print("Total months:", total_months)
+#print("Total:", "$",total_net)
+#print("Average Change:", "$",net_monthly_avg)
+#print("Greatest Increase in Profits:", greatest_increase)
+#print("Greatest Decrease in Profits:", greatest_decrease)
           
           
             
