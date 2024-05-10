@@ -19,14 +19,16 @@ total_net = 0
 
 #Change current working directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
 #Read the csv using the UTF-8 encoding and convert it into a list of dictionaries 
 
+     
 with open (file_to_load) as financial_data:
      reader = csv.reader(financial_data)
      
      #read the header row
      header = next(reader)
-
+  
 # Extract firs row to avoid appeding to net_change_list
 first_row = next (reader)  
 total_months += 1
@@ -69,10 +71,4 @@ output += f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_dec
 with open(file_to_output,"w") as txt_file:
   txt_file.write(output)
   print(output)
-     
-     
-
-
-
-
 
