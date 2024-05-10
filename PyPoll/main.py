@@ -12,6 +12,14 @@ import csv
 Election_data = os.path.join("Resources", "election_data.csv")
 Election_analysis = os.path.join("Analysis", "Election Results")
 
+# My variables from Financial analysis
+Count_of_votes = 0 
+candidate = []
+List_candidates = []
+percent_candidate = []
+total_candidate = []
+total_voter = 0 
+last_total = 0
 
 #Change current working directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
@@ -22,23 +30,20 @@ with open(Election_data, encoding='UTF-8') as csvfile:
     csvReader = csv.reader(csvfile, delimiter=",")
    
     #Read the header row
-    csvHeader =next(csvReader)
+    first_row = next(csvReader)
 
        # Extract first row to avoid appending to net_change_list
     first_row = next(csvReader)
 
+   
+    
+    for row in csvReader:
+     Count_of_votes += 1 
+     List_candidates.append(row[2])
+    
 
-# Define my variables:
-Total_votes = 0   # total of votes
-row_candidate = row[2]
-
-if row_candidate  in Candidate_Dict.keys():
-    Candidate_Dict [row_candidate ] += 1
-else:
-    Candidate_Dict [row_candidate ] = 1
-
-print(Total_votes)
-print(Candidate_Dict)
+print(Count_of_votes)
+print(List_candidates)
 
 
 

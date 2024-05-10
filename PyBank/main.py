@@ -4,7 +4,6 @@
 import csv
 import os
 
-
 #  Set the path for my load and output files:
 Financial_data = os.path.join("Resources", "budget_data.csv")
 Financial_analysis = os.path.join("Analyisis", "Analysis_PyBank.txt")
