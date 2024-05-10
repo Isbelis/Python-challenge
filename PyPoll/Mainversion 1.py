@@ -12,15 +12,37 @@ import csv
 Election_data = os.path.join("Resources", "election_data.csv")
 Election_analysis = os.path.join("Analysis", "Election Results")
 
+
+#Change current working directory
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
+#Read the csv using the UTF-8 encoding and convert it into a list of dictionaries 
+with open(Election_data, encoding='UTF-8') as csvfile:
+  # using delimiter 
+    csvReader = csv.reader(csvfile, delimiter=",")
+   
+    #Read the header row
+    csvHeader =next(csvReader)
+
+       # Extract first row to avoid appending to net_change_list
+    first_row = next(csvReader)
+
+
 # Define my variables:
-
 Total_votes = 0   # total of votes
-Cands_list = []   # list of candidates
-net_change_list = []
-greatest_increase = [("") ,0]
-greatest_decrease = [(""), 9999999999999999999999999999]
-total_net = 0
+row_candidate = row[2]
 
+if row_candidate  in Candidate_Dict.keys():
+    Candidate_Dict [row_candidate ] += 1
+else:
+    Candidate_Dict [row_candidate ] = 1
+
+print(Total_votes)
+print(Candidate_Dict)
+
+
+
+"""""
 #**********************************************
  # make a function to separate the responsibility
 def calculate_percents(inp_row):
@@ -74,6 +96,6 @@ def average(inp_list):
 print(average([1, 5, 9]))
 print(average(range(11)))
 
-
+"""
     # -*********************************************
   
