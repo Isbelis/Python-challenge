@@ -1,4 +1,3 @@
-
 #**** Module 3-homework-Python challenge - PyBank*******
 
 #Import Dependencies os and csv
@@ -18,7 +17,6 @@ greatest_increase = [("") , 0]
 greatest_decrease = [(""), 99999999999999999999999999999]
 total_net = 0
 
-
 #Change current working directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
@@ -33,66 +31,44 @@ with open(Financial_data, encoding='UTF-8') as csvfile:
     
        # Extract first row to avoid appending to net_change_list
     first_row = next(csvReader)
-
-    total_months += 1
-    total_net += int(first_row[1])
-    prev_net = int(first_row[1])
+total_months += 1
+total_net += int(first_row[1])
+prev_net = int(first_row[1])
     
-    for row in csvReader:    
+for row in csvReader:    
     # Track total
      total_months += 1
      total_net += int(row[1])
     
     # Trackt the net change 
-    if total_months == 1:
-     prev_net = int(row[1])
-    else:
-          net_change = int(row[1]) - prev_net 
-          month_of_change.append(row[0])
-          
-    prev_net = int(row[1])
-        
+net_change = int(row[1]) - prev_net
+prev_net = int(row[1])
+net_change_list += [net_change]
+month_of_change += [row[0]]
+    
     # calculate variables incre and decrea
     
-    if net_change > greatest_increase[1]:
+if net_change > greatest_increase[1]:
           greatest_increase[0] = row[0]
           greatest_increase[1] = net_change
           
           # Calculate the greatest decrease
-    if net_change < greatest_decrease[1]:
+if net_change < greatest_decrease[1]:
           greatest_decrease[0] = row[0]
           greatest_decrease[1] = net_change
           
      # Calculate the Average Net Change with only two decimal
-    #Avg_change = sum(net_change) / len(net_change)
+Avg_change = round(sum(net_change_list) / len(net_change_list),2)
     
     # Generate output Summary of Financial Analysis
 output = "----------\n"
 output += f"Financial Analysis\n"
 output += f"Total Months: {total_months}\n"
 output += f"Total: ${net_change}\n"
-#output += f"Average Change: ${Avg_change}\n"
+output += f"Average Change: ${Avg_change}\n"
 output += f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n"
 output += f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n"
     
 with open(Financial_analysis,"w") as txt_file:
   txt_file.write(output)
   print(output)
-
-    
-          
-
-    
-    
-        
-
-    
-      
- 
-          
-          
-            
-        
-        
-    
-    
