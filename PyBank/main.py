@@ -14,7 +14,7 @@ Count_of_Months = 0
 Change_Month = []
 netchange_list = []
 Greatest_incre = [("") , 0]
-Greatest_decre = [(""), 99999999999999999999999999999]
+Greatest_decre = [(""), 9999999999999]
 Total_net = 0
 net_changes = 0
 #Change current working directory
