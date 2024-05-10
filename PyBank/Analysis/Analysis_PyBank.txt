@@ -1,6 +1,0 @@
-----------
-Financial Analysis
-Total Months: 86
-Total: $-706444
-Greatest Increase in Profits:  ($0)
-Greatest Decrease in Profits: Feb-17 ($-706444)
