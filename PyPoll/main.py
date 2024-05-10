@@ -13,105 +13,124 @@ Election_data = os.path.join("Resources", "election_data.csv")
 Election_analysis = os.path.join("Analysis", "Election Results")
 
 # My variables from Financial analysis
-Count_of_votes = 0 
-candidate = []
+count_of_votes = 0
 List_candidates = []
+candidate = []
 percent_candidate = []
-total_candidate = []
-total_voter = 0 
-last_total = 0
+total_candidate= []
+total_voter = 0
+last_count = 0
 
 #Change current working directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 #Read the csv using the UTF-8 encoding and convert it into a list of dictionaries 
 with open(Election_data, encoding='UTF-8') as csvfile:
-  # using delimiter 
-    csvReader = csv.reader(csvfile, delimiter=",")
-   
-    #Read the header row
-    first_row = next(csvReader)
+    csv_reader = csv.reader(csvfile, delimiter=",")
 
-       # Extract first row to avoid appending to net_change_list
-    first_row = next(csvReader)
-    
-    for row in csvReader:
-     Count_of_votes += 1 
-     List_candidates.append(row[2])
-     Count_of_votes = len(List_candidates)
-   
-     for name in List_candidates:
-        if name not in candidate:
-          candidate.append(name)
-        x = name
-     candidate = List_candidates[0]
-     
-output = ("----------\n"
-    f"Election Results\n"
-    f"-----------------\n""
-    f"Total Votes: {Count_of_votes}\n"
-    f"-------------------------\n"
-    f"Average Change: ${Avg_change:.2f}\n"
-    f"Greatest Increase in Profits: {Greatest_incre[0]} (${Greatest_incre[1]})\n"
-    f"Greatest Decrease in Profits: {Greatest_decre[0]} (${Greatest_decre[1]})\n")
+    # Read header row first
+    csv_header = next(csvfile)
  
-with open(Financial_analysis,"w") as txt_file:
+    
+    for row in csv_reader:
+        List_candidates .append(row[2])
+
+    count_of_votes = len(List_candidates )
+#print(count_of_votes)
+
+# Name all candidates
+for name in List_candidates:
+    if name not in candidate:
+        candidate.append(name)
+        x = name
+
+# Set first candadidate on the dandidate_vote_list for loop
+candidates = List_candidates [0]
+
+
+print("Election Results")
+print("--------------------------")
+print(f"Total Votes: {count_of_votes}")
+print("--------------------------")
+with open(Election_analysis,"w") as txt_file:
  txt_file.write(output)
 print(output)
-"""""
-#**********************************************
- # make a function to separate the responsibility
-def calculate_percents(inp_row):
-    # do more work (check if attendees > 0)
-    if (int(inp_row[1]) != 0):
-        public_perc = int(inp_row[2]) / int(inp_row[1])
-    else:
-        public_perc = 0
-
-    if (int(inp_row[3]) != 0):
-        nonprofit_perc = int(inp_row[4]) / int(inp_row[3])
-    else:
-        nonprofit_perc = 0
-
-    if (int(inp_row[5]) != 0):
-        profit_perc = int(inp_row[6]) / int(inp_row[5])
-    else:
-        profit_perc = 0
-
-    # combine in a dictionary
-    data = {
-        "Public Percent": public_perc,
-        "Non-Profit Percent": nonprofit_perc,
-        "Profit Percent": profit_perc
-    }
-
-    return (data)
-
-
-
-# Write a function that returns the arithmetic average for a list of numbers
-def average(numbers):
-    length = len(numbers)
-    total = 0.0
-    for number in numbers:
-        total += number
-    return total / length
-
-
-# Test your function with the following:
-print(average([1, 5, 9]))
-print(average(range(11)))
-
-# @TODO: Write a function that returns the arithmetic average for a list of numbers
-def average(inp_list):
-    # do work
-    mean = sum(inp_list) / len(inp_list)
-    return mean
-
-# Test your function with the following:
-print(average([1, 5, 9]))
-print(average(range(11)))
-
 """
-    # -*********************************************
-  
+#**************************************
+# Set variables
+
+
+
+# Set path for election_data csvfile
+Election_data= os.path.join("Resources", "election_data.csv")
+
+#Change current working directory
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
+#Open and read election_data.csv
+with open(Election_data, encoding='UTF-8') as csvfile:
+    csv_reader = csv.reader(csvfile, delimiter=",")
+
+    # Read header row first
+    csv_header = next(csvfile)
+ 
+    
+    for row in csv_reader:
+        List_candidates .append(row[2])
+
+    count_of_votes = len(List_candidates )
+#print(count_of_votes)
+
+# Name all candidates
+for name in List_candidates:
+    if name not in candidate:
+        candidate.append(name)
+        x = name
+
+# Set first candadidate on the dandidate_vote_list for loop
+candidates = List_candidates [0]
+
+# Print election results as demonstrated in homework
+print("Election Results")
+print("--------------------------")
+print(f"Total Votes: {count_of_votes}")
+print("--------------------------")
+
+# Set loop for list of candidates who recieved votes, percentage of votes, total num for each candidate, and winner
+for candidates in candidate:
+    for vote in List_candidates :
+        if candidates == vote:
+            total_voter += 1
+    percent = total_voter/len(List_candidates)
+    percent_candidate.append(percent)
+    total_candidate.append(total_voter)
+
+    if last_count < total_voter:
+        Winner = candidates
+    print(f"{candidates}: {percent:.3%} ({total_voter})")
+
+    # Reset candidate votes to zero to name the winner
+    last_count = total_voter
+    total_voter = 0
+
+# Print election winner with popular vote
+print("---------------------")
+print(f"Winner: {Winner}")
+print("---------------------")
+
+
+# Output data to PyPoll_analysis.txt
+election_file = os.path.join("Analysis", "Analysis Pypoll.txt")
+
+with open(election_file, "w") as output_file:
+
+    output_file.write("Election Results\n")
+    output_file.write("-------------------------\n")
+    output_file.write(f"Total Votes: {count_of_votes}\n")
+    output_file.write("-------------------------\n")
+    for candidates in candidate: 
+        index = candidate.index(candidates)
+        output_file.write(f"{candidates}: {percent_candidate[index]:.3%} ({total_candidate[index]})\n ")
+    output_file.write("------------------------\n")
+    output_file.write(f"Winner: {Winner}\n")
+    """
