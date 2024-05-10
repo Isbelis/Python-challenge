@@ -32,9 +32,9 @@ with open(Financial_data, encoding='UTF-8') as csvfile:
 
        # Extract first row to avoid appending to net_change_list
     first_row = next(csvReader)
-total_months += 1
-total_net += int(first_row[1])
-prev_net = int(first_row[1])
+    total_months += 1
+    total_net += int(first_row[1])
+    prev_net = int(first_row[1])
 
 for row in csvReader: 
      
