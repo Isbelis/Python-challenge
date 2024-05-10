@@ -82,7 +82,7 @@ with open(Election_analysis,"w") as output_file:
     output_file.write("-------------------------\n")
     for candidates in candidate: 
         index = candidate.index(candidates)
-    output_file.write(f"{candidates}: {percent_candidate [index]:.3%} ({total_candidate[index]})\n ")
+        output_file.write(f"{candidates}: {percent_candidate[index]:.3%} ({total_candidate[index]})\n ")
     output_file.write("------------------------\n")
     output_file.write(f"Winner: {Winner}\n")
 """
