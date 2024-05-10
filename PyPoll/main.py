@@ -31,7 +31,6 @@ with open(Election_data, encoding='UTF-8') as csvfile:
     # Read header row first
     csv_header = next(csvfile)
  
-    
     for row in csv_reader:
         List_candidates .append(row[2])
 
@@ -47,49 +46,11 @@ for name in List_candidates:
 # Set first candadidate on the dandidate_vote_list for loop
 candidates = List_candidates [0]
 
-for vote in List_candidates :
-        if candidates == vote:
-            total_voter += 1
-percent = total_voter/len(List_candidates)
-percent_candidate.append(percent)
-total_candidate.append(total_voter)
-
-if last_count < total_voter:
-        Winner = candidates
-print(f"{candidates}: {percent:.3%} ({total_voter})")
-
-    # Reset candidate votes to zero to name the winner
-last_count = total_voter
-total_voter = 0
-"""
-output = ("----------\n"
-    "Election Results\n"
-    "-------------------------\n"
-    "--------------------------\n"
-    "Total Votes: {count_of_votes}\n"
-    "--------------------------\n"
-   for candidates in candidate: 
-       index = candidate.index(candidates)
-   f"{candidates}: {percent_candidate[index]:.3%} ({total_candidate[index]})\n"
-   "--------------------------\n"
-   f"Winner: {Winner}\n"
-   "---------------------\n")
-"""
-with open(Election_analysis,"w") as output_file:
-    output_file.write("Election Results\n")
-    output_file.write("-------------------------\n")
-    output_file.write(f"Total Votes: {count_of_votes}\n")
-    output_file.write("-------------------------\n")
-    for candidates in candidate: 
-        index = candidate.index(candidates)
-        output_file.write(f"{candidates}: {percent_candidate[index]:.3%} ({total_candidate[index]})\n ")
-    output_file.write("------------------------\n")
-    output_file.write(f"Winner: {Winner}\n")
-"""
-with open(Election_analysis,"w") as txt_file:
-    txt_file.write(output)
-print (output)
-
+# Print election results as demonstrated in homework
+print("Election Results")
+print("--------------------------")
+print(f"Total Votes: {count_of_votes}")
+print("--------------------------")
 
 # Set loop for list of candidates who recieved votes, percentage of votes, total num for each candidate, and winner
 for candidates in candidate:
@@ -115,17 +76,15 @@ print("---------------------")
 
 
 # Output data to PyPoll_analysis.txt
-election_file = os.path.join("Analysis", "Analysis Pypoll.txt")
+with open(Election_analysis, "w") as txtfile:
 
-with open(election_file, "w") as output_file:
-
-    output_file.write("Election Results\n")
-    output_file.write("-------------------------\n")
-    output_file.write(f"Total Votes: {count_of_votes}\n")
-    output_file.write("-------------------------\n")
+    txtfile.write("Election Results\n")
+    txtfile.write("-------------------------\n")
+    txtfile.write(f"Total Votes: {count_of_votes}\n")
+    txtfile.write("-------------------------\n")
     for candidates in candidate: 
         index = candidate.index(candidates)
-        output_file.write(f"{candidates}: {percent_candidate[index]:.3%} ({total_candidate[index]})\n ")
-    output_file.write("------------------------\n")
-    output_file.write(f"Winner: {Winner}\n")
-    """
+        txtfile.write(f"{candidates}: {percent_candidate[index]:.3%} ({total_candidate[index]})\n ")
+    txtfile.write("------------------------\n")
+    txtfile.write(f"Winner: {Winner}\n")
+
