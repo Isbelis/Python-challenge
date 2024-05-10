@@ -10,7 +10,7 @@ import csv
 
 # Files to load and output 
 Election_data = os.path.join("Resources", "election_data.csv")
-Election_analysis = os.path.join("Analysis", "Election Results")
+Election_analysis = os.path.join("Analysis", "Election Results.txt")
 
 # My variables from Financial analysis
 count_of_votes = 0
