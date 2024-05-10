@@ -1,17 +1,16 @@
 #***********************************************
 # Module 3-homework-Python challenge - PYPOLL
 #*************************************************
-#Importing the csv this is my file
+#Importing Dependecies  os and csv (my files)
 #*************************************************
 # Dependecies
 import os
 import csv
 
-mkdir election_data.csv
 
 # Files to load and output 
-load_f = os.path.join("Resources", "election_data.csv")
-output_f = os.path.join("Analysis", "Election Results")
+Election_data = os.path.join("Resources", "election_data.csv")
+Election_analysis = os.path.join("Analysis", "Election Results")
 
 # Define my variables:
 
