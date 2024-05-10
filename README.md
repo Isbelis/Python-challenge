@@ -1,6 +1,6 @@
 Python Challenge - Module 3 
 
-On Python Challenge,  I analyzed the records of two csv files create a Python script, my calculation was each file. I could do the following:
+I analyzed the records of two csv files create a Python script, my calculation was each file. I could do the following:
 
 a.  PyBankThe:The dataset is composed of two columns: "Date" and "Prot/Losses". I analyzed the records to calculate each of the following values:
 1. The total number of months included in the dataset.
@@ -11,8 +11,8 @@ a.  PyBankThe:The dataset is composed of two columns: "Date" and "Prot/Losses". 
 
 b. Pyboll:The dataset is composed of three columns: "Voter ID", "County", and "Candidate. I analized the votes and calculates each of the
 following values:
-1. The total number of votes cast
-2. A complete list of candidates who received votes
-3. The percentage of votes each candidate won
-4. The total number of votes each candidate won
-5. The winner of the election based on popular vote
+1. The total number of votes cast.
+2. A complete list of candidates who received votes.
+3. The percentage of votes each candidate won.
+4. The total number of votes each candidate won.
+5. The winner of the election based on popular vote.
