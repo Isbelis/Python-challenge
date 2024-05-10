@@ -6,10 +6,10 @@ import csv
 import os
 
 #  Set the path for my load and output files:
-file_to_load = os.path.join("Resources", "budget_data.csv")
+Financial_data = os.path.join("Resources", "budget_data.csv")
 file_to_output= os.path.join("Analysis", "Analysis Pybank version 2.txt")
 
-# TRack various financila parameters
+# TRack various financial parameters
 total_months = 0 
 month_of_change = []
 net_change_list = []
@@ -20,22 +20,23 @@ total_net = 0
 #Change current working directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
-#Read the csv using the UTF-8 encoding and convert it into a list of dictionaries 
+#Read the csv  and convert it into a list of dictionaries 
+     
+with open(Financial_data, encoding='UTF-8') as csvfile:
+  # using delimiter 
+    csvReader = csv.reader(csvfile, delimiter=",")
+   
+    #Read the header row
+    csvHeader =next(csvReader)
+    
 
-     
-with open (file_to_load) as financial_data:
-     reader = csv.reader(financial_data)
-     
-     #read the header row
-     header = next(reader)
-  
-# Extract firs row to avoid appeding to net_change_list
-first_row = next (reader)  
+       # Extract first row to avoid appending to net_change_list
+    first_row = next(csvReader)
 total_months += 1
 total_net += int(first_row[1])
 prev_net = int(first_row[1])
 
-for row in reader:
+for row in csvReader: 
      
      # Track the total
      total_months += 1
