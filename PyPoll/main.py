@@ -34,19 +34,30 @@ with open(Election_data, encoding='UTF-8') as csvfile:
 
        # Extract first row to avoid appending to net_change_list
     first_row = next(csvReader)
-
-   
     
     for row in csvReader:
      Count_of_votes += 1 
      List_candidates.append(row[2])
-    
-
-print(Count_of_votes)
-print(List_candidates)
-
-
-
+     Count_of_votes = len(List_candidates)
+   
+     for name in List_candidates:
+        if name not in candidate:
+          candidate.append(name)
+        x = name
+     candidate = List_candidates[0]
+     
+output = ("----------\n"
+    f"Election Results\n"
+    f"-----------------\n""
+    f"Total Votes: {Count_of_votes}\n"
+    f"-------------------------\n"
+    f"Average Change: ${Avg_change:.2f}\n"
+    f"Greatest Increase in Profits: {Greatest_incre[0]} (${Greatest_incre[1]})\n"
+    f"Greatest Decrease in Profits: {Greatest_decre[0]} (${Greatest_decre[1]})\n")
+ 
+with open(Financial_analysis,"w") as txt_file:
+ txt_file.write(output)
+print(output)
 """""
 #**********************************************
  # make a function to separate the responsibility
