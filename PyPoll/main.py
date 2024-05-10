@@ -12,7 +12,7 @@ import csv
 Election_data = os.path.join("Resources", "election_data.csv")
 Election_analysis = os.path.join("Analysis", "Election Results.txt")
 
-# My variables from Financial analysis
+# My variables from Election Results
 count_of_votes = 0
 List_candidates = []
 candidate = []
@@ -35,7 +35,7 @@ with open(Election_data, encoding='UTF-8') as csvfile:
         List_candidates .append(row[2])
 
     count_of_votes = len(List_candidates )
-#print(count_of_votes)
+
 
 # Name all candidates
 for name in List_candidates:
@@ -43,16 +43,16 @@ for name in List_candidates:
         candidate.append(name)
         x = name
 
-# Set first candadidate on the dandidate_vote_list for loop
+# Set first candadidate on the List_candidate for loop
 candidates = List_candidates [0]
 
-# Print election results as demonstrated in homework
+# Print election results of count of votes
 print("Election Results")
 print("--------------------------")
 print(f"Total Votes: {count_of_votes}")
 print("--------------------------")
 
-# Set loop for list of candidates who recieved votes, percentage of votes, total num for each candidate, and winner
+# My loop for candidate who recieved votes, percentage of votes, total num for each candidate, and winner
 for candidates in candidate:
     for vote in List_candidates :
         if candidates == vote:
@@ -69,13 +69,13 @@ for candidates in candidate:
     last_count = total_voter
     total_voter = 0
 
-# Print election winner with popular vote
+# Print winner by popular votes
 print("---------------------")
 print(f"Winner: {Winner}")
 print("---------------------")
 
 
-# Output data to PyPoll_analysis.txt
+# Output data to Election Results.txt
 with open(Election_analysis, "w") as txtfile:
 
     txtfile.write("Election Results\n")
