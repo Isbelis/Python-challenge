@@ -61,7 +61,7 @@ for candidates in candidate:
     percent_candidate.append(percent)
     total_candidate.append(total_voter)
 
-    if last_count < total_voter:
+    if  total_voter > last_count:
         Winner = candidates
     print(f"{candidates}: {percent:.3%} ({total_voter})")
 
